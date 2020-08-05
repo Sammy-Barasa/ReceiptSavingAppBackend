@@ -25,7 +25,7 @@ SECRET_KEY = '!_rks3+g)kz$(j01ml7^y_+uukqww8n3^^09vyj9=an%ly#st9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['receiptsavingapp.herokuapp.com/',
+ALLOWED_HOSTS = ['receiptsavingapp.herokuapp.com',
 ]
 
 
