@@ -1,8 +1,8 @@
 
 
 from django.urls import path
-from . import views
+from .views import AuthUserView
 
 urlpatterns=[
-    path('',views.index,name='index'),
+    path('user/',AuthUserAPIView.as_view(),name='user_endpoint'),
 ] 
