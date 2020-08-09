@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '!_rks3+g)kz$(j01ml7^y_+uukqww8n3^^09vyj9=an%ly#st9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 
@@ -140,7 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'RSaverBackend/static'),
+    os.path.join(BASE_DIR,     'RSaverBackend/static'),
 )
 # RestFrameWork
 
