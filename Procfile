@@ -1,1 +1,1 @@
-web: python ReceiptSavingAppBackend/manage.py collectstatic --no-input; gunicorn  ReceiptSaverBackend.wsgi 
+web: gunicorn  ReceiptSaverBackend.wsgi
