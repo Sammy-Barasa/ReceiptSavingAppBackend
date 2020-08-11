@@ -30,7 +30,7 @@ if DEBUG:
 '127.0.0.1',
 ]
 else:
-    ALLOWED_HOSTS = [os.environ.get('')
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')
 ]
 
 # Application definition
