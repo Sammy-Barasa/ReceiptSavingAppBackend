@@ -7,13 +7,18 @@ class UserSerializer (serializers.ModelSerializer):
     class Meta:
         model=User
         fields="__all__"
+        write_only_fields = ['password',]
+        
 
     def create(self,validated_data):
-            return User(
-                username=validated_data['username'],
-                email=validated_data['email'],
-                password=validated_data['password'],
-            )
+        user = User(
+        username=validated_data['username'], 
+        email=validated_data['email'], 
+        password=validated_data['password'])
+        user.groups.none
+        user.save()
+        print('----------__')
+        return user
 
             
 # No need for HyperlinkedModelSerializer since user serializer does not depend on any relationship yet
