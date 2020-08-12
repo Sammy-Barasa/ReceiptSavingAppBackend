@@ -13,6 +13,7 @@ from django.utils.timezone import now
 # Receipt Model
 
 class Receipt (models.Model):
+    owner= models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     receipt_image=models.ImageField(upload_to='static/images')
     date_saved=models.DateTimeField(now())

@@ -14,6 +14,7 @@ from rest_framework.renderers import JSONRenderer
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
+# User Auth Endpoint
 
 @api_view(['GET','POST'])
 @permission_classes([AllowAny])
@@ -23,20 +24,42 @@ def auth_user(request):
             print(data)
             user=User.objects.get(email=data['email'])
             print(user)
-            serializer=UserSerializer(user,context={"request":data})
-            json=JSONRenderer().render(serializer.data)
-            print(json)
+            
             print('--------')
             if user:
                 authenticated_user=authenticate(username=data["username"],password=data["password"],email=data["email"])
                 if authenticated_user is None:
                     return Response({"message":"Wrong email or password","status":401})
-                return Response({'user':authenticated_user,'status':200})
+                serializer=UserSerializer(authenticated_user)
+                json=JSONRenderer().render(serializer.data)
+                print(json)
+                return Response({'user':json,'status':200})
             return Response({"message":"no such user","status":404})
     return Response({'message':"hello world"})
 
+# User Creating Endpoint
 
-# User Auth Endpoint
+@api_view(['GET','POST'])
+@permission_classes([AllowAny])
+def add_user(request):
+    if request.method =="POST":
+            new_user = request.data
+            new_user_username = new_user['username']
+            print(new_user)
+            serializer=UserSerializer(data=new_user)
+            print('--------------------------------')
+            print(serializer.get_fields())
+            print('--------------------------------')
+            valid=serializer.is_valid()
+            print(serializer.validated_data)
+            json=JSONRenderer().render(serializer.data)
+            print(json)
+            if valid:
+                return Response({'messagee':'new user,{new_user_username} added','status':200})
+            return Response({"message":"user not added","status":404})
+    return Response({'message':"Add a new user"})
+
+
 
 # class AuthUserAPIView(CreateAPIView):
     
@@ -68,7 +91,11 @@ def auth_user(request):
 # "username":"barasa",
 # "password": "barasa"
 # }   
-            
+#    {
+# "email": "test1@gmail.com", 
+# "username":"test1",
+# "password": "test1"
+# }         
 
 
 
