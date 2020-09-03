@@ -32,7 +32,7 @@ SECRET_KEY = '!_rks3+g)kz$(j01ml7^y_+uukqww8n3^^09vyj9=an%ly#st9'
 # else:
     
 # ]
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
 # Application definition
 
 INSTALLED_APPS = [
